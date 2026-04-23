@@ -1,0 +1,52 @@
+select * from emp;
+select max(sal) from emp where deptno = 10;
+
+select * from emp;
+select max(hiredate) from emp where deptno = 20;
+
+select * from emp;
+select min(sal) from emp where deptno = 10;
+
+select * from emp;
+select min(hiredate) from emp where deptno = 20;
+
+select * from emp;
+select avg(sal) from emp where deptno = 30;
+
+select * from emp;
+select avg(sal), '10' as deptno from emp where deptno = 10
+union all
+select avg(sal), '20' as deptno from emp where deptno = 20
+union all
+select avg(sal), '30' as deptno from emp where deptno = 30;
+
+select * from emp;
+select avg(sal), deptno from emp group by deptno;
+
+select * from emp;
+select deptno, job, avg(sal)
+from emp
+group by deptno, job
+order by deptno, job;
+
+select * from emp;
+select deptno, job, avg(sal)
+from emp
+group by deptno, job
+having avg(sal) >= 2000
+order by deptno, job;
+
+select * from emp;
+select deptno, job, avg(sal)
+from emp
+where sal <= 3000
+group by deptno, job
+having avg(sal) >= 2000
+order by deptno, job;
+
+select * from emp;
+select * from emp;select deptno, job, count(*), max(sal), sum(sal), avg(sal)
+from emp
+group by deptno, job
+order by deptno, job;
+
