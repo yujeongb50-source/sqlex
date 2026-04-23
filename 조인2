@@ -1,0 +1,40 @@
+select e1.empno, e1.ename, e1.mgr,
+e2.empno as mgr_empno,
+e2.ename as mgr_ename
+from emp e1, emp e2
+where e1.mgr = e2.empno;
+
+
+select * 
+from emp e natural join dept d
+order by deptno, e.empno;
+
+select e1.ename AS 사원, 
+e2.ename as 상사
+from emp e1
+join emp e2
+on e1.mgr = e2.empno;
+
+select * from emp;
+select * from dept;
+
+select * 
+from emp e
+join dept  
+on e.deptno = d.deptno;
+
+select * 
+from emp e
+left join dept d
+on e.deptno = d.deptno;
+
+select * 
+from emp e
+right join dept d
+on e.deptno = d.deptno;
+
+
+
+
+
+
