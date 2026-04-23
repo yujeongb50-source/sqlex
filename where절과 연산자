@@ -1,0 +1,9 @@
+select * from emp;
+
+select empno, ename, sal, deptno from emp intersect select empno, ename, sal, deptno from emp where deptno = 10 ;
+
+select empno, ename, sal, deptno from emp minus select empno, ename, sal, deptno from emp where deptno = 10;
+
+select empno, ename, sal, deptno from emp where deptno = 10 union all select empno, ename, sal, deptno from emp where deptno = 10;
+
+select empno, ename, sal, deptno from emp where deptno = 10 union select empno, ename, sal, deptno from emp where deptno = 20;
