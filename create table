@@ -1,0 +1,21 @@
+create table dept_temp
+as select * from dept;
+
+select * from dept_temp;
+
+insert into dept_temp (deptno, dname, loc)
+values(50, 'DATABASE','SEOUL');
+
+insert into dept_temp
+values(60, 'NETWORK', 'BUSAN');
+
+select * from dept_temp;
+
+insert into dept_temp(deptno, dname, loc)
+values (70,'WEB',null);
+
+insert into dept_temp(deptno, dname, loc)
+values(80,'MOBILE','');
+
+insert into dept_temp(deptno, loc)
+values(90, 'INCHEON');
