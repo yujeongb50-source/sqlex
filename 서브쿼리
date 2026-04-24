@@ -1,0 +1,32 @@
+select * from emp;
+
+select sal from emp
+where ename = 'JONES';
+
+select * from emp
+where sal > (select sal from emp 
+where ename = 'JONES');
+
+select *
+from emp 
+where hiredate < (select hiredate from emp
+where ename = 'SCOTT');
+
+select e.empno, e.ename, e.job, e.sal, d.deptno, d.dname, d.loc
+from emp e, dept d 
+where e.deptno = d.deptno
+and e.deptno = 20
+and e.sal > (select avg(sal) from emp);
+
+select * from emp
+where sal in (select max(sal) from emp group by deptno);
+
+select * from emp;
+select * from emp where sal = any(select max(sal) 
+from emp group by deptno);
+
+select * from emp;
+select * from emp where  sal = some(select max(sal)
+from emp group by deptno);
+
+
