@@ -1,0 +1,35 @@
+create Table emp_ddl(
+empno number(4),
+ename varchar2(10),
+job varchar2(9),
+mgr number(4),
+hiredate date,
+sal number(7,2),
+comm number(7,2),
+deptno number(2));
+
+desc emp_ddl;
+
+create table dept_ddl
+as select * from dept;
+
+desc dept_ddl;
+
+create table empdept_ddl
+as select e.empno, e.ename, e.job, e.mgr, e.hiredate,
+e.sal, e.comm, d.deptno, d.dname, d.loc
+from emp e, dept d
+where 1 <> 1;
+
+select * from empdept_ddl;
+
+create table emp_alter
+as select * from emp;
+
+select * from emp_alter;
+
+alter table emp_alter
+add hp varchar2(20);
+
+alter table emp_alter
+rename column hp to tel;
