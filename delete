@@ -1,0 +1,20 @@
+create table emp_temp3
+as select * from emp;
+
+select * from emp_temp3;
+
+delete from emp_temp3
+where job = 'MANAGER';
+
+select * from emp_temp3;
+select * from salgrade;
+
+delete from emp_temp3
+where empno in (select e.empno
+from emp_temp3 e, salgrade s
+where e.sal between s. losal and s.hisal
+
+and s.grade =3
+and deptno=30);
+
+select * from emp_temp3;
