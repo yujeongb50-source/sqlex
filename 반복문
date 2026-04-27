@@ -1,0 +1,37 @@
+begin
+for i in 0..4 loop
+continue when mod(i,2) = 1;
+dbms_output.put_line('현재 i의 값 : ' ||i);
+end looP;
+END;
+
+begin
+for i in 0..4 loop
+dbms_eutput.put_line('현재의 i의 값:' || i);
+end loop;
+end;
+
+begin
+for i in reverse 0..4 loop
+dbms_output.put_line('현재 i의 값:' ||i);
+end loop;
+end;
+
+declare
+v_num number :=0;
+begin
+while v_num < 4 loop
+dbms_output.put_line('현재 v_num: ' || v_num);
+v_num := v_num + 1;
+end loop;
+end;
+
+declare
+v_num number := 0;
+begin
+loop
+dbms_out.put_line('현재 v_num : ' ||v_num);
+v_num := v_num+1;
+exit when v_num>4;
+end loop;
+end;
