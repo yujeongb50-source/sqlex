@@ -1,0 +1,9 @@
+create or replace procedure pro_noparam
+is
+v_empno number(4) := 7788;
+v_ename varchar2(10);
+begin
+v_ename := 'SCOTT';
+dbms_output.put_line('V_EMPNO: ' || V_EMPNO);
+dbms_output.put_line('V_ENAME: ' || V_ENAME);
+end;
