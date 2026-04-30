@@ -1,0 +1,58 @@
+코드
+1. 테이블 생성
+create table S_PRODUCT(
+SNO numbeR(5) primary key,
+SNAME varchar2(30) null ,
+SCATEGORY varchar2(30) null,
+SPRICE NUMBER(30) CHECK(SPRICE >= 0),
+STOCK NUMBER(30) NULL,
+SDATE DATE DEFAULT SYSDATE);
+
+2. 실전 데이터
+(1문항)
+SELECT SNO AS 상품번호, SNAME AS 상품명, SCATEGORY AS 카테고리, SPRICE AS 단가, 
+STOCK AS 재고수량, SDATE AS 등록일 
+FROM S_PRODUCT  
+ORDER BY SPRICE DESC;
+
+(2문항)
+SELECT SCATEGORY AS 카테고리, AVG(SPRICE) AS 평균단가
+FROM S_PRODUCT
+GROUP BY SCATEGORY, SPRICE
+HAVING AVG(SPRICE) >= 500000
+ORDER BY SCATEGORY, SPRICE;
+
+(3문항)
+SELECT SNAME AS 상품명, SPRICE AS 단가 FROM S_PRODUCT 
+WHERE SPRICE > (SELECT AVG(SPRICE) FROM S_PRODUCT);
+
+(4문항)
+update S_PRODUCT
+SET SPRICE = SPRICE *1.1
+WHERE SCATEGORY = '가전' AND STOCK < 10;
+
+(5문항)
+SELECT sno as 상품번호, sname as 상품명, scategory as 카테고리,
+sprice as 단가, stock as 재고수량, sdate as 등록일
+FROM S_PRODUCT
+WHERE SNAME LIKE 'S%' 
+OR SCATEGORY = '생활';
+
+4. 트리거 테이블
+create table S_DEL_LOG(
+P_ID NUMBER(4) NULL,
+DEL_DATE DATE DEFAULT SYSDATE);
+
+트리거 코드
+CREATE OR REPLACE TRIGGER trg_sproduct_log
+AFTER DELETE ON S_PRODUCT
+FOR EACH ROW
+
+BEGIN
+
+INSERT INTO s_del_log(p_id)
+VALUES(:old.sname);
+
+end;
+/
+
